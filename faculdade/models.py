@@ -27,18 +27,18 @@ class Aluno(models.Model):
         return self.nome
 
 class Matricula(models.Model):
-    nummat = models.ForeignKey(Aluno,on_delete=models.CASCADE)
-    codigo = models.ForeignKey(Disciplina,on_delete=models.CASCADE)
+    nome = models.ForeignKey(Aluno,on_delete=models.CASCADE)
+    titulo = models.ForeignKey(Disciplina,on_delete=models.CASCADE)
     ano = models.IntegerField()
     faltas = models.IntegerField()
     nota_final = models.IntegerField() 
     def __str__(self):
-        return self.nummat
+        return self.nome.nome
 
 class Alocacao(models.Model):
     nfunc = models.ForeignKey(Professor,on_delete=models.CASCADE)
     codigo = models.ForeignKey(Disciplina,on_delete=models.CASCADE)
     horario = models.TimeField()
     carga = models.IntegerField()
-    #def __str__(self):
-        
+    def __str__(self):
+        return self.nfunc.nome
